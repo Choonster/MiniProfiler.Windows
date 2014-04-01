@@ -77,22 +77,6 @@ namespace MiniProfiler.Windows
             output.AppendLine("*** MiniProfiler Output:");
             output.AppendLine(mp.Render().ToString());
             output.AppendLine();
-            if (!mp.HasSqlTimings) return output.ToString();
-            output.AppendLine("*** MiniProfiler SQL Timings:");
-
-            //Get the top 10 SQL queries that were over 100 milliseconds unless otherwise specified
-            foreach (
-                var currTiming in
-                    mp.GetSqlTimings().Where(i => i.DurationMilliseconds > includeSqlWithDurationMoreThanMilliseconds).
-                        OrderByDescending(
-                            i => i.DurationMilliseconds).Take(takeTopNumberOfQueries))
-            {
-                output.AppendLine();
-                output.AppendFormat("*{1}*{0}		{2}{3}{4}{3}", (currTiming.IsDuplicate ? "(D)" : "   "),
-                                    Convert.ToInt32(currTiming.DurationMilliseconds),
-                                    currTiming.StackTraceSnippet, Environment.NewLine,
-                                    currTiming.FormattedCommandString.Replace(Environment.NewLine, ""));
-            }
 
             return output.ToString();
         }

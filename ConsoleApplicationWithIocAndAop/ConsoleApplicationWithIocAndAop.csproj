@@ -85,7 +85,7 @@
       <HintPath>..\MiniProfiler.Windows\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="MiniProfiler">
-      <HintPath>..\MiniProfiler.Windows\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
+      <HintPath>..\MiniProfiler.Windows\packages\MiniProfiler.3.0.10-beta7\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
     <Reference Include="Snap, Version=1.7.4517.28477, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\MiniProfiler.Windows\packages\SNAP.1.7.7\lib\net40\Snap.dll</HintPath>

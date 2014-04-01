@@ -9,6 +9,7 @@
 // */
 
 using StackExchange.Profiling;
+using System;
 
 namespace MiniProfiler.Windows
 {
@@ -21,17 +22,26 @@ namespace MiniProfiler.Windows
             return _profiler;
         }
 
-        public override StackExchange.Profiling.MiniProfiler Start(ProfileLevel level)
+        public override void Stop(bool discardResults)
         {
-            _profiler = new StackExchange.Profiling.MiniProfiler(ConsoleProfiling.ProfilingUrl(), level);
+            SaveProfiler(_profiler);
+        }
+
+        public override StackExchange.Profiling.MiniProfiler Start(string sessionName = null)
+        {
+            _profiler = new StackExchange.Profiling.MiniProfiler(ConsoleProfiling.ProfilingUrl());
             SetProfilerActive(_profiler);
             _profiler.User = ConsoleProfiling.CurrentUser();
             return _profiler;
         }
 
-        public override void Stop(bool discardResults)
+        [Obsolete]
+        public override StackExchange.Profiling.MiniProfiler Start(ProfileLevel level, string sessionName = null)
         {
-            SaveProfiler(_profiler);
+            _profiler = new StackExchange.Profiling.MiniProfiler(ConsoleProfiling.ProfilingUrl(), level);
+            SetProfilerActive(_profiler);
+            _profiler.User = ConsoleProfiling.CurrentUser();
+            return _profiler;
         }
     }
 }
